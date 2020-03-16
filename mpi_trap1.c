@@ -147,6 +147,13 @@ void Get_Data(
       if(my_rank == 0){
          printf("Enter a, b, and n\n");
          scanf("%lf %lf %d", a_p, b_p, n_p);
+      }
+      
+      MPI_Bcast(a_p, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+      MPI_Bcast(b_p, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+      MPI_Bcast(n_p, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+      /*
 
       for(dest = 1; dest < comm_sz; dest++){
          MPI_Send(a_p, 1, MPI_DOUBLE, dest, 0, MPI_COMM_WORLD);
@@ -159,4 +166,5 @@ void Get_Data(
          MPI_Recv(b_p, 1, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD,MPI_STATUS_IGNORE);
          MPI_Recv(n_p, 1, MPI_INT, 0, 0,MPI_COMM_WORLD,MPI_STATUS_IGNORE);
       }
+      */ 
    }
